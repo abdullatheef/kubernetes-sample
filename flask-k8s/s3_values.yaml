@@ -1,0 +1,10 @@
+loki:
+  config:
+    storage:
+      type: s3
+      s3:
+        bucketname: your-s3-bucket-name
+        endpoint: your-s3-endpoint-url
+        access_key: your-access-key
+        secret_key: your-secret-key
+        region: your-s3-region

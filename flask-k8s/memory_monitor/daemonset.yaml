@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: memory-monitor
+  namespace: myns  # Replace with your namespace if different
+spec:
+  selector:
+    matchLabels:
+      app: memory-monitor
+  template:
+    metadata:
+      labels:
+        app: memory-monitor
+    spec:
+      containers:
+      - name: memory-monitor
+        image: memory-monitor:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        resources:
+          limits:
+            memory: "256Mi"
+          requests:
+            memory: "128Mi"
